@@ -72,25 +72,6 @@ impl Log {
 
 	#[cfg(debug_assertions)]
 	fn deadlock_detector() {
-		loop {
-			std::thread::sleep(std::time::Duration::from_secs(1));
-
-			let deadlocks = parking_lot::deadlock::check_deadlock();
-			if deadlocks.is_empty() {
-				continue;
-			}
-
-			tracing::error!("DEADLOCK DETECTED");
-
-			for (i, threads) in deadlocks.iter().enumerate() {
-				tracing::error!("Deadlock #{}", i);
-				for t in threads {
-					tracing::error!("Thread Id {:#?}", t.thread_id());
-					tracing::error!("{:#?}", t.backtrace());
-				}
-			}
-
-			// Optionally: std::process::abort() to get a core dump
-		}
+		// parking_lot deadlock detection removed to avoid feature conflict with dioxus-server
 	}
 }

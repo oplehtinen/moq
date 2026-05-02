@@ -42,9 +42,8 @@ hex = "0.4"
 humantime = "2.3"
 humantime-serde = "1.1"
 
-moq-lite = { workspace = true, features = ["serde"] }
-parking_lot = { version = "0.12", features = ["deadlock_detection"] }
-qmux = { workspace = true, features = ["wss", "tls"], optional = true }
+moq-lite = { workspace = true }
+qmux = { version = "0.0.5", features = ["wss", "tls"], optional = true, default-features = false }
 quinn = { version = "0.11", default-features = false, features = [
     "platform-verifier",
     "runtime-tokio",
@@ -62,15 +61,15 @@ serde_with = { version = "3", features = ["hex"] }
 tikv-jemalloc-ctl = { version = "0.6", optional = true }
 tikv-jemallocator = { version = "0.6", features = ["profiling", "unprefixed_malloc_on_supported_platforms"], optional = true }
 time = "0.3"
-tokio = { workspace = true, features = ["full"] }
+tokio = { version = "1.48", features = ["full"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 url = "2"
-web-transport-iroh = { workspace = true, optional = true }
-web-transport-noq = { workspace = true, optional = true }
-web-transport-proto = { workspace = true, optional = true }
-web-transport-quiche = { workspace = true, optional = true }
-web-transport-quinn = { workspace = true, optional = true }
+web-transport-iroh = { version = "0.3", optional = true }
+web-transport-noq = { version = "0.0.3", optional = true }
+web-transport-proto = { version = "0.6", optional = true }
+web-transport-quiche = { version = "0.2", optional = true }
+web-transport-quinn = { version = "0.11", optional = true }
 
 [dev-dependencies]
 bytes = "1"
